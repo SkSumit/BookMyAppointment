@@ -6,6 +6,7 @@ const router = new express.Router();
 
 //POST CREATE USER
 router.post("/users", async (req, res) => {
+  console.log(req.body);
   const firstEntry = new User(req.body);
   try {
     await firstEntry.save();
