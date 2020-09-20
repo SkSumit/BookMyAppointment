@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-
+import { Button } from "./common/Typography";
 class Header extends Component {
   toggleNavbar = (e) => {
     document
@@ -12,14 +12,14 @@ class Header extends Component {
     return (
       <div>
         <nav
-          className="navbar is-spaced is-primary"
+          className="navbar is-spaced "
           role="navigation"
           aria-label="main navigation"
         >
           <div className="navbar-brand">
             <div className="navbar-item">
               <NavLink activeClassName="is-active" to="/">
-                <h3 className="title is-3 has-text-white">BYO</h3>
+                <h3 className="title is-3 ">BYO</h3>
               </NavLink>
             </div>
 
@@ -39,22 +39,35 @@ class Header extends Component {
 
           <div id="navbarBasicExample" className="navbar-menu">
             <div className="navbar-start">
-              <div className="navbar-item">
-                <NavLink activeClassName="is-active" to="/">
+              <div className="navbar-item ">
+                <NavLink
+                  className="navlink has-text-black"
+                  activeClassName="navlink has-text-danger"
+                  exact
+                  to="/"
+                >
                   Book
                 </NavLink>
               </div>
               <div className="navbar-item">
-                <NavLink activeClassName="is-active" to="/dashboard">
+                <NavLink
+                  to="/dashboard"
+                  className="navlink has-text-black"
+                  activeClassName="navlink has-text-danger"
+                >
                   Dashboard
                 </NavLink>
               </div>
             </div>
             <div className="navbar-end">
               <div className="navbar-item">
-                <button className="button  is-rounded has-background-danger has-text-white has-text-weight-semibold ">
-                  LogOut
-                </button>
+                <Button
+                  text={"Logout"}
+                  rounded={true}
+                  bgColor={"danger"}
+                  txtColor={"white"}
+                  isSemiBold={true}
+                />
               </div>
             </div>
           </div>

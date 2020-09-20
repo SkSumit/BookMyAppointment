@@ -1,8 +1,9 @@
 import axios from "axios";
+import { ADD_APPOINTMENT, GET_APPOINTMENT } from "../Utils/actionConst";
 
 export const getAppointment = (appointments) => {
   return {
-    type: "GET_APPOINTMENTS",
+    type: GET_APPOINTMENT,
     appointments,
   };
 };
@@ -15,8 +16,9 @@ export const startGetAppointment = () => {
 };
 
 export const addAppointment = (appointments) => {
+  console.log("dispatched");
   return {
-    type: "ADD_APPOINTMENTS",
+    type: ADD_APPOINTMENT,
     appointments,
   };
 };
@@ -29,7 +31,7 @@ export const startAddAppointment = (addAppointments) => {
         addAppointments
       );
       console.log(postdata);
-      return dispatch(getAppointment(addAppointments));
+      return dispatch(addAppointment(addAppointments));
     } catch (error) {
       throw error;
     }
