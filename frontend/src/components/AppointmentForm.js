@@ -1,111 +1,77 @@
 import React from "react";
 import { connect } from "react-redux";
 import { startAddAppointment } from "../Action/appointmentActions";
-class AppointmentForm extends React.Component {
-  state = {
-    name: "",
-    age: "",
-    phonenumber: "",
-    date: "",
-    email: "",
-  };
+import { FormField, Button } from "./common/Typography";
 
-  onSubmitHandler = (e) => {
-    e.preventDefault();
-    console.log("Hey", this.state);
-    this.props.dispatch(startAddAppointment(this.state));
-  };
-  onChangeName = (e) => {
-    const name = e.target.value;
-    this.setState(() => ({ name }));
-  };
-  onChangeAge = (e) => {
-    const age = e.target.value;
-    this.setState(() => ({ age }));
-  };
-  onChangePN = (e) => {
-    const phonenumber = e.target.value;
-    this.setState(() => ({ phonenumber }));
-  };
-  onChangeDate = (e) => {
-    const date = e.target.value;
-    this.setState(() => ({ date }));
-  };
-  onChangeEmail = (e) => {
-    const email = e.target.value;
-    this.setState(() => ({ email }));
-  };
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import DateTimeCalender from "./DatePicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import * as Yup from "yup";
+
+import { initials, yupValidators } from "../Utils/validationConst";
+
+class AppointmentForm extends React.Component {
+  fieldTypes = ["Name", "Age", "Email"];
   render() {
     return (
-      <form onSubmit={this.onSubmitHandler}>
-        <div class="field">
-          <label class="label">Name</label>
-          <div class="control">
-            <input
-              class="input"
-              type="text"
-              placeholder="Enter Your Name Here"
-              value={this.state.name}
-              onChange={this.onChangeName}
+      <Formik
+        initialValues={initials}
+        validationSchema={Yup.object(yupValidators)}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            console.log(values);
+
+            this.props.dispatch(startAddAppointment(values));
+            setSubmitting(false);
+          }, 400);
+        }}
+      >
+        {
+          <Form>
+            {this.fieldTypes.map((name, index) => {
+              return (
+                <FormField key={index} label={name}>
+                  <Field
+                    name={name}
+                    className="input"
+                    type="text"
+                    placeholder={`Enter Your ${name} Here`}
+                  />
+                  <ErrorMessage
+                    name={name}
+                    render={(error) => (
+                      <div className="help is-danger">{error}</div>
+                    )}
+                  />
+                </FormField>
+              );
+            })}
+            <FormField label={"Phone Number"}>
+              <Field
+                name="phonenumber"
+                class="input"
+                type="number"
+                placeholder="Enter Your Age Here"
+              />
+              <ErrorMessage
+                name="phonenumber"
+                render={(error) => <div class="help is-danger">{error}</div>}
+              />
+            </FormField>
+            <FormField label={"Date"}>
+              <DateTimeCalender name="date" />
+            </FormField>
+            <Button
+              text={"Submit"}
+              rounded={true}
+              bgColor={"danger"}
+              txtColor={"white"}
+              isSemiBold={true}
             />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Age</label>
-          <div class="control ">
-            <input
-              class="input is-success"
-              type="number"
-              placeholder="Text input"
-              value={this.state.age}
-              onChange={this.onChangeAge}
-            />
-          </div>
-          <p class="help is-success">This username is available</p>
-        </div>
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control ">
-            <input
-              class="input is-danger"
-              type="email"
-              placeholder="Email input"
-              value={this.state.email}
-              onChange={this.onChangeEmail}
-            />
-          </div>
-          <p class="help is-danger">This email is invalid</p>
-        </div>
-        <div class="field">
-          <label class="label">Phone Number</label>
-          <div class="control ">
-            <input
-              class="input is-success"
-              type="number"
-              placeholder="Text input"
-              value={this.state.phonenumber}
-              onChange={this.onChangePN}
-            />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Date</label>
-          <div class="control ">
-            <input
-              class="input is-success"
-              type="number"
-              placeholder="Text input"
-              defaultValue="18092020"
-              onChange={this.onChangeDate}
-            />
-          </div>
-        </div>
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link">Submit</button>
-          </div>
-        </div>
-      </form>
+          </Form>
+        }
+      </Formik>
     );
   }
 }

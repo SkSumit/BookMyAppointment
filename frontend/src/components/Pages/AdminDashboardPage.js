@@ -14,6 +14,7 @@ class AdminDashboardPage extends React.Component {
       throw error;
     }
   };
+
   render() {
     return (
       <div>
@@ -21,7 +22,7 @@ class AdminDashboardPage extends React.Component {
           <Title title="Welcome, Doctor" />
           <Subtitle subtitle="Here are your recent appoinments" />
           {this.props.appoinment.map((appoinment) => {
-            return <p key={appoinment._id}>{appoinment.name} </p>;
+            return <p key={appoinment._id}>{appoinment.Name} </p>;
           })}
         </Section>
       </div>

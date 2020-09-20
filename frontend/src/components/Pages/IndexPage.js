@@ -8,11 +8,17 @@ import AppointmentForm from "../AppointmentForm";
 class IndexPage extends React.Component {
   render() {
     return (
-      <div>
+      <div className=" hero is-fullheight-with-navbar landing">
         <Section>
-          <Title title="Welcome,Patient" />
-          <Subtitle subtitle="Book your appointments here!" />
-          <AppointmentForm />
+          <div className=" box columns is-centered is-vcentered">
+            <div className=" column is-4  has-text-left ">
+              <Title title="Providing Quality Care with Patience" />
+              <Subtitle subtitle="No Rush Appointments, Minimal Wait Times. " />
+            </div>
+            <div className="column is-4 py-6">
+              <AppointmentForm />
+            </div>
+          </div>
         </Section>
       </div>
     );
