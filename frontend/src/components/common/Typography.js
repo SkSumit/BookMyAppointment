@@ -16,9 +16,10 @@ export const Button = (props) => {
   const bgColor = props.bgColor ? props.bgColor : "";
   const txtColor = props.txtColor ? props.txtColor : "";
   const isSemiBold = props.isSemiBold ? "has-text-weight-semibold" : "";
+  const isLoading = props.isLoading ? "is-loading" : "";
   return (
     <button
-      className={`button ${isrounded} has-background-${bgColor} has-text-${txtColor} ${isSemiBold}`}
+      className={`button ${isrounded} has-background-${bgColor} has-text-${txtColor} ${isSemiBold} ${isLoading}`}
     >
       {props.text}
     </button>

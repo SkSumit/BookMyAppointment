@@ -6,7 +6,7 @@ const DatePickerField = ({ ...props }) => {
   const { setFieldValue } = useFormikContext();
   const [field] = useField(props);
   var date = new Date();
-  console.log(date.getDay(), date.getDay() !== 0);
+
   return (
     <DatePicker
       {...field}

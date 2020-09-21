@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    _appId: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

@@ -10,8 +10,12 @@ class IndexPage extends React.Component {
     return (
       <div className=" hero is-fullheight-with-navbar landing">
         <Section>
-          <div className=" box columns is-centered is-vcentered">
-            <div className=" column is-4  has-text-left ">
+          <div className=" box columns is-centered is-vcentered has-fixed-height">
+            <div className=" column is-4 has-text-left ">
+              <img
+                src={require("../../Img/medicine-wellness.svg")}
+                width="128"
+              />
               <Title title="Providing Quality Care with Patience" />
               <Subtitle subtitle="No Rush Appointments, Minimal Wait Times. " />
             </div>
