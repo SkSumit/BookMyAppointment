@@ -5,6 +5,7 @@ $grey: #4a5059;
 $text-strong: $black;
 $text: $grey;
 $red: #ec3750;
+$danger: $black;
 
 @mixin backgroundShorthand($imgpath, $position: 0 0, $repeat: repeat) {
   background: transparent url(#{$imgpath}) $repeat $position;
@@ -13,7 +14,13 @@ $red: #ec3750;
   @include backgroundShorthand("./Img/Taieri.svg");
 }
 a.navlink.has-text-black:hover {
-  color: $red !important;
+  color: #c6c6c6 !important;
+}
+.navbar-item:hover {
+  color: #c6c6c6 !important;
 }
 
+.box.columns.is-centered.is-vcentered.has-fixed-height {
+  min-height: 580px !important;
+}
 @import "../node_modules/bulma/bulma";

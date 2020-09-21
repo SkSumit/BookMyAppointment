@@ -11,7 +11,8 @@ class AdminDashboardPage extends React.Component {
     try {
       this.props.dispatch(startGetAppointment());
     } catch (error) {
-      throw error;
+      console.log("error");
+      // throw error;
     }
   };
 
@@ -24,6 +25,7 @@ class AdminDashboardPage extends React.Component {
           {this.props.appoinment.map((appoinment) => {
             return <p key={appoinment._id}>{appoinment.Name} </p>;
           })}
+          {this.props.error && <p>{this.props.error}</p>}
         </Section>
       </div>
     );
@@ -32,6 +34,7 @@ class AdminDashboardPage extends React.Component {
 const mapStateToProps = (state) => {
   return {
     appoinment: state.appointments,
+    error: state.error,
   };
 };
 export default connect(mapStateToProps)(AdminDashboardPage);
