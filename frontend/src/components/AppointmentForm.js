@@ -39,7 +39,6 @@ class AppointmentForm extends React.Component {
                 const _id = await this.props.dispatch(
                   startAddAppointment(values)
                 );
-                console.log(_id);
                 this.changeView(1, _id);
                 setSubmitting(false);
               } catch (error) {

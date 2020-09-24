@@ -23,4 +23,13 @@ a.navlink.has-text-black:hover {
 .box.columns.is-centered.is-vcentered.has-fixed-height {
   min-height: 580px !important;
 }
+//Table
+.box.table-wrapper {
+  overflow-x: auto;
+}
+$table-cell-border: 0px;
+$table-cell-padding: 1em 0.75em;
+table tbody tr td img:hover {
+  background-color: $red;
+}
 @import "../node_modules/bulma/bulma";

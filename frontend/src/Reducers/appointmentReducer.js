@@ -7,6 +7,8 @@ export default (state = initialState, action) => {
       return action.appointments;
     case ADD_APPOINTMENT:
       return [...state, action.appointments];
+    case "DELETE_APPOINTMENT":
+      return state.filter((item) => item._id !== action.appointments.id);
 
     default:
       return state;
