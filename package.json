@@ -7,6 +7,9 @@
     "heroku-postbuild": "cd.. && cd ./frontend/ && npm install && npm run build",
     "dev": "nodemon server.js"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
