@@ -1,0 +1,13 @@
+{
+  "name": "bookingsystem",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "cd ./backend/ && npm install && node server.js",
+    "heroku-postbuild": "cd.. && cd ./frontend/ && npm install && npm run build",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

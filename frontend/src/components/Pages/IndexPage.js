@@ -15,6 +15,7 @@ class IndexPage extends React.Component {
               <img
                 src={require("../../Img/medicine-wellness.svg")}
                 width="128"
+                alt="Medicine Logo"
               />
               <Title title="Providing Quality Care with Patience" />
               <Subtitle subtitle="No Rush Appointments, Minimal Wait Times. " />

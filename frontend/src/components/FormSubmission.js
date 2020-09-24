@@ -1,8 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 
 const FormSubmissionSucessfully = (props) => {
-  console.log(props);
   return (
     <div className="notification is-danger is-light">
       Your appointment has been booked succesfully. You will recieve a mail
