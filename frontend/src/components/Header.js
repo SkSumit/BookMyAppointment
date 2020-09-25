@@ -58,6 +58,15 @@ class Header extends Component {
                   Dashboard
                 </NavLink>
               </div>
+              <div className="navbar-item">
+                <NavLink
+                  to="/status"
+                  className="navlink has-text-black"
+                  activeClassName="navlink has-text-danger"
+                >
+                  Status
+                </NavLink>
+              </div>
             </div>
             <div className="navbar-end">
               <div className="navbar-item">

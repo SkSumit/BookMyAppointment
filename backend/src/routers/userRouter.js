@@ -45,6 +45,7 @@ router.patch("/users/:id", async (req, res) => {
   const _id = req.params.id;
 
   const updates = req.body;
+  console.log("this are my updates", updates);
   try {
     const user = await User.findByIdAndUpdate(_id, updates, {
       new: true,
@@ -74,4 +75,17 @@ router.delete("/users/:id", async (req, res) => {
   }
 });
 
+//GET STATUS
+router.get("/status/:id", async (req, res) => {
+  const _id = req.params.id;
+  try {
+    const user = await User.findOne({ _appId: _id });
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 module.exports = router;

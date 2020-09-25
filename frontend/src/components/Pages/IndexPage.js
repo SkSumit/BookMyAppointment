@@ -1,14 +1,14 @@
 import React from "react";
 
 import Section from "../common/Section";
-import { Title, Subtitle } from "../common/Typography";
+import { Title, Subtitle, Landing } from "../common/Typography";
 
 import AppointmentForm from "../AppointmentForm";
 
 class IndexPage extends React.Component {
   render() {
     return (
-      <div className=" hero is-fullheight-with-navbar landing">
+      <Landing>
         <Section>
           <div className=" box columns is-centered is-vcentered has-fixed-height">
             <div className=" column is-4 has-text-left ">
@@ -25,7 +25,7 @@ class IndexPage extends React.Component {
             </div>
           </div>
         </Section>
-      </div>
+      </Landing>
     );
   }
 }

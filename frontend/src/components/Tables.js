@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { startDeleteAppointment } from "../Action/appointmentActions";
+import { Link } from "react-router-dom";
 const Tables = (props) => {
   return (
     <table className="table is-hoverable is-fullwidth">
@@ -36,7 +37,9 @@ const Tables = (props) => {
                 )}
               </td>
               <td>
-                <img alt="edit" src={require("../Img/edit.svg")} />
+                <Link to={`edit/${appoinment._id}`}>
+                  <img alt="edit" src={require("../Img/edit.svg")} />
+                </Link>
               </td>
               <td>
                 <img
