@@ -1,10 +1,10 @@
 import * as Yup from "yup";
 
 export const initials = {
-  Name: "",
-  Age: "",
-  Email: "",
-  phonenumber: "",
+  Name: "Sumit",
+  Age: "12",
+  Email: "12@12.com",
+  phonenumber: "1235467897",
   date: new Date(),
 };
 

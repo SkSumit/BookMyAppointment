@@ -9,12 +9,6 @@ import { startGetAppointment } from "../../Action/appointmentActions";
 import Tables from "../Tables";
 
 class AdminDashboardPage extends React.Component {
-  componentDidMount = async () => {
-    try {
-      this.props.dispatch(startGetAppointment());
-    } catch (error) {}
-  };
-
   render() {
     return (
       <div>

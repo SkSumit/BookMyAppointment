@@ -8,7 +8,7 @@ mongoose.connect(uri, {
   useUnifiedTopology: true,
   useFindAndModify: false,
 });
-
+mongoose.set("returnOriginal", false);
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");

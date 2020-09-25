@@ -1,0 +1,74 @@
+import React from "react";
+
+import { FormField, Button } from "./Typography";
+
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import DateTimeCalender from "../DatePicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
+class FormikForm extends React.Component {
+  render() {
+    return (
+      <Formik
+        initialValues={this.props.initials}
+        validationSchema={this.props.yupValidators}
+        onSubmit={this.props.onSubmitHandler}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            {this.props.fieldTypes.map((name, index) => {
+              return (
+                <FormField key={index} label={name}>
+                  <Field
+                    name={name}
+                    className="input is-rounded"
+                    type="text"
+                    placeholder={`Enter Your ${name} Here`}
+                  />
+                  <ErrorMessage
+                    name={name}
+                    render={(error) => (
+                      <div className="help is-danger">{error}</div>
+                    )}
+                  />
+                </FormField>
+              );
+            })}
+            {this.props.extra && (
+              <FormField label={"Phone Number"}>
+                <Field
+                  name="phonenumber"
+                  className="input is-rounded"
+                  type="number"
+                  placeholder="Enter Your Age Here"
+                />
+                <ErrorMessage
+                  name="phonenumber"
+                  render={(error) => (
+                    <div className="help is-danger">{error}</div>
+                  )}
+                />
+              </FormField>
+            )}
+            {this.props.extra && (
+              <FormField label={"Date"}>
+                <DateTimeCalender name="date" />
+              </FormField>
+            )}
+            <Button
+              text={"Submit"}
+              rounded={true}
+              bgColor={"danger"}
+              txtColor={"white"}
+              isSemiBold={true}
+              isLoading={isSubmitting}
+            />
+          </Form>
+        )}
+      </Formik>
+    );
+  }
+}
+
+export default FormikForm;

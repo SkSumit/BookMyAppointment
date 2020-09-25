@@ -34,3 +34,11 @@ export const FormField = (props) => {
     </div>
   );
 };
+
+export const Landing = (props) => {
+  return (
+    <div className=" hero is-fullheight-with-navbar landing">
+      {props.children}
+    </div>
+  );
+};

@@ -38,12 +38,25 @@ export const startAddAppointment = (addAppointments) => {
   return async (dispatch) => {
     try {
       const _appId = shortid.generate();
+      const status = false;
       const postdata = await axios.post(url + "/users", {
         ...addAppointments,
         _appId,
+        status,
       });
+      // console.log(postdata, postdata.data._id);
 
-      return dispatch(addAppointment({ ...addAppointments, _appId })), _appId;
+      return (
+        dispatch(
+          addAppointment({
+            ...addAppointments,
+            _appId,
+            _id: postdata.data._id,
+            status,
+          })
+        ),
+        _appId
+      );
     } catch (error) {
       throw error;
     }
@@ -67,4 +80,57 @@ export const startDeleteAppointment = (id) => {
       throw error;
     }
   };
+};
+
+//GET ONE APPOINTMENT
+export const getOneAppointment = (appointments) => {
+  return {
+    type: "GET_ONE_APPOINTMENT",
+    appointments,
+  };
+};
+
+export const startGetOneAppointment = (id) => {
+  return async (dispatch) => {
+    try {
+      const postdata = await axios.get(url + `/users/${id}`);
+      console.log(postdata.data);
+      return dispatch(getOneAppointment(postdata.data));
+    } catch (error) {
+      throw error;
+    }
+  };
+};
+
+//EDIT
+export const editAppointment = (_id, updates) => {
+  return {
+    type: "EDIT_APPOINTMENT",
+    appointments: {
+      _id,
+      updates,
+    },
+  };
+};
+export const startEditAppointment = (id, updates) => {
+  return async (dispatch) => {
+    try {
+      console.log(updates);
+      const postdata = await axios.patch(url + `/users/${id}`, updates);
+      console.log("Update axios req", postdata.data);
+      return dispatch(editAppointment(id, updates));
+    } catch (error) {
+      throw error;
+    }
+  };
+};
+
+//GET STATUS
+export const startGetStatus = async (_appId) => {
+  try {
+    const status = await axios.get(url + `/status/${_appId}`);
+    return status.data;
+  } catch (error) {
+    throw error;
+  }
 };
