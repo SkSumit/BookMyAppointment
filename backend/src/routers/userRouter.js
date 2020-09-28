@@ -5,11 +5,13 @@ const User = require("../models/users");
 const router = new express.Router();
 
 //POST CREATE USER
-router.post("/users", async (req, res) => {
-  console.log(req.body);
+router.post("/api/users", async (req, res) => {
+  // console.log(req.body);
   const firstEntry = new User(req.body);
+  console.log(firstEntry);
   try {
-    await firstEntry.save();
+    const lol = await firstEntry.save();
+    console.log(lol);
     res.status(201).send(firstEntry);
   } catch (error) {
     res.status(400).send(error);
@@ -17,7 +19,7 @@ router.post("/users", async (req, res) => {
 });
 
 //GET ALL USER
-router.get("/users", async (req, res) => {
+router.get("/api/users", async (req, res) => {
   try {
     const users = await User.find({});
     res.status(200).send(users);
@@ -27,7 +29,7 @@ router.get("/users", async (req, res) => {
 });
 
 //GET SINGLE USER
-router.get("/users/:id", async (req, res) => {
+router.get("/api/users/:id", async (req, res) => {
   const _id = req.params.id;
   try {
     const user = await User.findById(_id);
@@ -41,11 +43,11 @@ router.get("/users/:id", async (req, res) => {
 });
 
 //PATCH UPDATE SINGLE USER
-router.patch("/users/:id", async (req, res) => {
+router.patch("/api/users/:id", async (req, res) => {
   const _id = req.params.id;
 
   const updates = req.body;
-  console.log("this are my updates", updates);
+
   try {
     const user = await User.findByIdAndUpdate(_id, updates, {
       new: true,
@@ -61,7 +63,7 @@ router.patch("/users/:id", async (req, res) => {
 });
 
 //DELETE DELETE SINGLE USER
-router.delete("/users/:id", async (req, res) => {
+router.delete("/api/users/:id", async (req, res) => {
   const _id = req.params.id;
 
   try {
@@ -76,7 +78,7 @@ router.delete("/users/:id", async (req, res) => {
 });
 
 //GET STATUS
-router.get("/status/:id", async (req, res) => {
+router.get("/api/status/:id", async (req, res) => {
   const _id = req.params.id;
   try {
     const user = await User.findOne({ _appId: _id });
@@ -89,3 +91,22 @@ router.get("/status/:id", async (req, res) => {
   }
 });
 module.exports = router;
+//UPDATE STATUS
+router.patch("/api/status/:id", async (req, res) => {
+  const _id = req.params.id;
+  const updates = req.body;
+
+  try {
+    const user = await User.findByIdAndUpdate(_id, updates, {
+      new: true,
+      runValidators: true,
+    });
+    console.log(user);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});

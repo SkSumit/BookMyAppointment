@@ -23,6 +23,18 @@ export default (state = initialState, action) => {
         }
       });
 
+    case "TOGGLE_STATUS":
+      return state.map((item) => {
+        if (item._id === action.appointments._id) {
+          return {
+            ...item,
+            ...action.appointments.updates,
+          };
+        } else {
+          return item;
+        }
+      });
+
     default:
       return state;
   }
