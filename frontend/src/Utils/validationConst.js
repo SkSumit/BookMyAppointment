@@ -5,7 +5,7 @@ export const initials = {
   Age: "12",
   Email: "12@12.com",
   phonenumber: "1235467897",
-  date: new Date(),
+  date: "",
 };
 
 export const yupValidators = {
@@ -30,5 +30,5 @@ export const yupValidators = {
     )
     .required("Required Phone Number"),
 
-  date: Yup.string().required("Required Name"),
+  date: Yup.date().required("Required Date"),
 };

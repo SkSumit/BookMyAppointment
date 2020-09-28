@@ -29,10 +29,28 @@ export const Button = (props) => {
 export const FormField = (props) => {
   return (
     <div className="field">
-      <label className="label">{props.label}</label>
-      <div className="control">{props.children}</div>
+      <label className="label ">{props.label}</label>
+      <div className="control has-icons-left">
+        {props.children}
+        <span className="icon is-small is-left">
+          {FormFieldIcons(props.label)}
+        </span>
+      </div>
     </div>
   );
+};
+
+const FormFieldIcons = (label) => {
+  switch (label) {
+    case "Name":
+      return <img alt="edit" src={require("../../Img/user.svg")} />;
+    case "Age":
+      return <img alt="edit" src={require("../../Img/triangle.svg")} />;
+    case "Email":
+      return <img alt="edit" src={require("../../Img/mail.svg")} />;
+    case "Phone Number":
+      return <img alt="edit" src={require("../../Img/phone.svg")} />;
+  }
 };
 
 export const Landing = (props) => {

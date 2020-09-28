@@ -19,7 +19,8 @@ export const getAppointment = (appointments) => {
 export const startGetAppointment = () => {
   return async (dispatch) => {
     try {
-      const appointment = await axios.get(url + "/users");
+      const appointment = await axios.get(url + "/api/users");
+
       return dispatch(getAppointment(appointment.data));
     } catch (error) {
       return dispatch(getAppointmentError(error));
@@ -39,13 +40,19 @@ export const startAddAppointment = (addAppointments) => {
     try {
       const _appId = shortid.generate();
       const status = false;
-      const postdata = await axios.post(url + "/users", {
+      const postdata = await axios.post(url + "/api/users", {
         ...addAppointments,
         _appId,
         status,
       });
       // console.log(postdata, postdata.data._id);
+      console.log("apiCall", {
+        ...addAppointments,
+        _appId,
+        status,
 
+        date: new Date("2014-01-22T14:56:59.301Z"),
+      });
       return (
         dispatch(
           addAppointment({
@@ -74,7 +81,7 @@ export const deleteAppointment = (id) => {
 export const startDeleteAppointment = (id) => {
   return async (dispatch) => {
     try {
-      const postdata = await axios.delete(url + `/users/${id}`);
+      const postdata = await axios.delete(url + `/api/users/${id}`);
       return dispatch(deleteAppointment(id));
     } catch (error) {
       throw error;
@@ -116,7 +123,7 @@ export const startEditAppointment = (id, updates) => {
   return async (dispatch) => {
     try {
       console.log(updates);
-      const postdata = await axios.patch(url + `/users/${id}`, updates);
+      const postdata = await axios.patch(url + `/api/users/${id}`, updates);
       console.log("Update axios req", postdata.data);
       return dispatch(editAppointment(id, updates));
     } catch (error) {
@@ -128,9 +135,32 @@ export const startEditAppointment = (id, updates) => {
 //GET STATUS
 export const startGetStatus = async (_appId) => {
   try {
-    const status = await axios.get(url + `/status/${_appId}`);
+    const status = await axios.get(url + `/api/status/${_appId}`);
     return status.data;
   } catch (error) {
     throw error;
   }
+};
+
+export const toggleStatus = (_id, updates) => {
+  console.log(_id, updates);
+  return {
+    type: "TOGGLE_STATUS",
+    appointments: {
+      _id,
+      updates,
+    },
+  };
+};
+export const startToggleStatus = (id, updates) => {
+  return async (dispatch) => {
+    try {
+      // console.log(id, updates);
+      const postdata = await axios.patch(url + `/api/status/${id}`, updates);
+      // console.log(postdata);
+      return dispatch(toggleStatus(id, updates));
+    } catch (error) {
+      throw error;
+    }
+  };
 };

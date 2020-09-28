@@ -2,9 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { startDeleteAppointment } from "../Action/appointmentActions";
 import { Link } from "react-router-dom";
+import DropDownMenu from "./DropDownMenu";
+
 const Tables = (props) => {
   return (
-    <table className="table is-hoverable is-fullwidth">
+    <table className="table is-hoverable is-fullwidth  ">
       <thead>
         <tr>
           <th>Position</th>
@@ -14,6 +16,7 @@ const Tables = (props) => {
           <th>Phone Number</th>
           <th>Appointment Date</th>
           <th>Status</th>
+          <th>Options</th>
         </tr>
       </thead>
 
@@ -26,9 +29,11 @@ const Tables = (props) => {
               <td>{appoinment.Age}</td>
               <td>{appoinment.Email}</td>
               <td>{appoinment.phonenumber}</td>
-              <td>{appoinment.date.toString()}</td>
+              <td>{new Date(appoinment.date).toLocaleDateString("en-GB")}</td>
               <td>
-                {index % 2 === +0 ? (
+                {appoinment.status === undefined ? (
+                  <span className="tag is-light is-link">Beta Tester</span>
+                ) : appoinment.status ? (
                   <span className="tag is-success is-light">Confirmed</span>
                 ) : (
                   <span className="tag  is-warning is-light">
@@ -37,17 +42,13 @@ const Tables = (props) => {
                 )}
               </td>
               <td>
-                <Link to={`edit/${appoinment._id}`}>
-                  <img alt="edit" src={require("../Img/edit.svg")} />
-                </Link>
-              </td>
-              <td>
-                <img
-                  alt="delete"
-                  onClick={() => {
-                    props.dispatch(startDeleteAppointment(appoinment._id));
-                  }}
-                  src={require("../Img/trash.svg")}
+                <DropDownMenu
+                  length={props.appoinment.length}
+                  index={index}
+                  name={appoinment.Name}
+                  date={appoinment.date}
+                  _id={appoinment._id}
+                  status={appoinment.status}
                 />
               </td>
             </tr>

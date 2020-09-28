@@ -43,6 +43,7 @@ class FormikForm extends React.Component {
                   type="number"
                   placeholder="Enter Your Age Here"
                 />
+
                 <ErrorMessage
                   name="phonenumber"
                   render={(error) => (
@@ -54,6 +55,12 @@ class FormikForm extends React.Component {
             {this.props.extra && (
               <FormField label={"Date"}>
                 <DateTimeCalender name="date" />
+                <ErrorMessage
+                  name="date"
+                  render={(error) => (
+                    <div className="help is-danger">{error}</div>
+                  )}
+                />
               </FormField>
             )}
             <Button
