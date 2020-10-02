@@ -136,6 +136,7 @@ export const startEditAppointment = (id, updates) => {
 export const startGetStatus = async (_appId) => {
   try {
     const status = await axios.get(url + `/api/status/${_appId}`);
+
     return status.data;
   } catch (error) {
     throw error;
