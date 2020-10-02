@@ -4,8 +4,7 @@ import Section from "../common/Section";
 import { Title, Subtitle } from "../common/Typography";
 
 import { connect } from "react-redux";
-import { startGetAppointment } from "../../Action/appointmentActions";
-
+import Options from "../Options.js";
 import Tables from "../Tables";
 
 class AdminDashboardPage extends React.Component {
@@ -19,8 +18,10 @@ class AdminDashboardPage extends React.Component {
               <Subtitle subtitle="Here are your recent appoinments" />
             </div>
           </article>
+          <Options />
           <div className="box table-wrapper">
             <Tables />
+
             {this.props.error && <p>{this.props.error}</p>}
           </div>
         </Section>

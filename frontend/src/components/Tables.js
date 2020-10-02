@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { startDeleteAppointment } from "../Action/appointmentActions";
-import { Link } from "react-router-dom";
+import getSortedAppointments from "../Selectors/appointmentSelectors";
 import DropDownMenu from "./DropDownMenu";
 
 const Tables = (props) => {
@@ -9,7 +8,6 @@ const Tables = (props) => {
     <table className="table is-hoverable is-fullwidth  ">
       <thead>
         <tr>
-          <th>Position</th>
           <th>Name</th>
           <th>Age</th>
           <th>Email</th>
@@ -24,7 +22,6 @@ const Tables = (props) => {
         {props.appoinment.map((appoinment, index) => {
           return (
             <tr key={appoinment._id}>
-              <th>{index + 1}</th>
               <td> {appoinment.Name}</td>
               <td>{appoinment.Age}</td>
               <td>{appoinment.Email}</td>
@@ -61,7 +58,7 @@ const Tables = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    appoinment: state.appointments,
+    appoinment: getSortedAppointments(state.appointments),
     error: state.error,
   };
 };
