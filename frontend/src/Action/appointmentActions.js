@@ -46,13 +46,7 @@ export const startAddAppointment = (addAppointments) => {
         status,
       });
       // console.log(postdata, postdata.data._id);
-      console.log("apiCall", {
-        ...addAppointments,
-        _appId,
-        status,
 
-        date: new Date("2014-01-22T14:56:59.301Z"),
-      });
       return (
         dispatch(
           addAppointment({
@@ -81,7 +75,7 @@ export const deleteAppointment = (id) => {
 export const startDeleteAppointment = (id) => {
   return async (dispatch) => {
     try {
-      const postdata = await axios.delete(url + `/api/users/${id}`);
+      await axios.delete(url + `/api/users/${id}`);
       return dispatch(deleteAppointment(id));
     } catch (error) {
       throw error;
@@ -101,7 +95,7 @@ export const startGetOneAppointment = (id) => {
   return async (dispatch) => {
     try {
       const postdata = await axios.get(url + `/users/${id}`);
-      console.log(postdata.data);
+      // console.log(postdata.data);
       return dispatch(getOneAppointment(postdata.data));
     } catch (error) {
       throw error;
@@ -122,9 +116,9 @@ export const editAppointment = (_id, updates) => {
 export const startEditAppointment = (id, updates) => {
   return async (dispatch) => {
     try {
-      console.log(updates);
+      // console.log(updates);
       const postdata = await axios.patch(url + `/api/users/${id}`, updates);
-      console.log("Update axios req", postdata.data);
+      // console.log("Update axios req", postdata.data);
       return dispatch(editAppointment(id, updates));
     } catch (error) {
       throw error;
@@ -144,7 +138,6 @@ export const startGetStatus = async (_appId) => {
 };
 
 export const toggleStatus = (_id, updates) => {
-  console.log(_id, updates);
   return {
     type: "TOGGLE_STATUS",
     appointments: {
@@ -157,7 +150,7 @@ export const startToggleStatus = (id, updates) => {
   return async (dispatch) => {
     try {
       // console.log(id, updates);
-      const postdata = await axios.patch(url + `/api/status/${id}`, updates);
+      await axios.patch(url + `/api/status/${id}`, updates);
       // console.log(postdata);
       return dispatch(toggleStatus(id, updates));
     } catch (error) {

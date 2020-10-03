@@ -1,9 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  startToggleStatus,
-  startGetStatus,
-} from "../Action/appointmentActions";
+import { startToggleStatus } from "../Action/appointmentActions";
 import { Link } from "react-router-dom";
 import Modal from "./common/Modal";
 class DropDownMenu extends React.Component {

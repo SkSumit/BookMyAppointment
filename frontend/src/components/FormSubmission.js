@@ -27,26 +27,15 @@ export const FormSubmissionUnsucessfully = (props) => {
 };
 
 export const StatusSubmissionSucessfully = (props) => {
-  console.log(props.statusData.status === undefined ? "here" : "not here");
   return (
     <div className="notification is-danger is-light">
       Hello, {props.statusData.Name} ! <br />
       <br />
-      {props.statusData.status === undefined ? (
-        <strong>
-          🌚 psss,if you can see this you are a ✨ BETA TESTER! ⚡️
-          <br />
-          or really good at inspecting my code on browser or github 👀💅
-          <br />
-          Nevertheless Thanks for helping me out.🎉🎉🎉
-        </strong>
-      ) : props.statusData.status === true ? (
-        `Your appointment status is confirmed. We would send you a mail at
+      {props.statusData.status === true
+        ? `Your appointment status is confirmed. We would send you a mail at
         ${props.statusData.Email} 3 hours prior.`
-      ) : (
-        `Your appointment status is not confirmed. We would send you a mail at
-        ${props.statusData.Email} on confirmation.`
-      )}
+        : `Your appointment status is not confirmed. We would send you a mail at
+        ${props.statusData.Email} on confirmation.`}
     </div>
   );
 };

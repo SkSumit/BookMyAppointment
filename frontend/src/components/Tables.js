@@ -28,9 +28,7 @@ const Tables = (props) => {
               <td>{appoinment.phonenumber}</td>
               <td>{new Date(appoinment.date).toLocaleDateString("en-GB")}</td>
               <td>
-                {appoinment.status === undefined ? (
-                  <span className="tag is-light is-link">Beta Tester</span>
-                ) : appoinment.status ? (
+                {appoinment.status ? (
                   <span className="tag is-success is-light">Confirmed</span>
                 ) : (
                   <span className="tag  is-warning is-light">
@@ -58,7 +56,7 @@ const Tables = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    appoinment: getSortedAppointments(state.appointments),
+    appoinment: getSortedAppointments(state.appointments, state.filters),
     error: state.error,
   };
 };
