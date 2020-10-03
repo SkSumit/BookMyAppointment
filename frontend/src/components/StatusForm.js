@@ -41,7 +41,6 @@ class StatusForm extends React.Component {
                 this.changeView(1, statusData);
 
                 setSubmitting(false);
-                console.log(this.state.statusData);
               } catch (error) {
                 this.changeView(2);
               }

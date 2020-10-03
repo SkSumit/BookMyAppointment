@@ -50,6 +50,8 @@ const FormFieldIcons = (label) => {
       return <img alt="edit" src={require("../../Img/mail.svg")} />;
     case "Phone Number":
       return <img alt="edit" src={require("../../Img/phone.svg")} />;
+    default:
+      return;
   }
 };
 

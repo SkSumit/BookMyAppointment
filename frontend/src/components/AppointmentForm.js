@@ -34,7 +34,6 @@ class AppointmentForm extends React.Component {
             initials={initials}
             yupValidators={Yup.object(yupValidators)}
             onSubmitHandler={async (values, { setSubmitting }) => {
-              console.log("Formik", values);
               try {
                 const _id = await this.props.dispatch(
                   startAddAppointment(values)
@@ -52,6 +51,8 @@ class AppointmentForm extends React.Component {
         return <FormSubmissionSucessfully _id={this.state._id} />;
       case 2:
         return <FormSubmissionUnsucessfully />;
+      default:
+        return;
     }
   }
 }

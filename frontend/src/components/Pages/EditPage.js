@@ -6,7 +6,7 @@ import { Title, Subtitle } from "../common/Typography";
 import FormikForm from "../common/FormikForm";
 import * as Yup from "yup";
 
-import { initials, yupValidators } from "../../Utils/validationConst";
+import { yupValidators } from "../../Utils/validationConst";
 import { startEditAppointment } from "../../Action/appointmentActions";
 
 class EditPage extends React.Component {
@@ -25,7 +25,7 @@ class EditPage extends React.Component {
             yupValidators={Yup.object(yupValidators)}
             onSubmitHandler={async (values, { setSubmitting }) => {
               try {
-                const _id = await this.props.dispatch(
+                await this.props.dispatch(
                   startEditAppointment(this.props.match.params.id, values)
                 );
 
