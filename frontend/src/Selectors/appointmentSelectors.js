@@ -1,6 +1,8 @@
 const getSortedAppointments = (appointments, filter) => {
   return appointments
     .filter((appointment) => {
+      const startDateMatch = new Date(appointment.date) > filter.startDate;
+      const endDateMatch = new Date(appointment.date) < filter.endDate;
       const appointmentSooner =
         filter.sortBy === "sooner" ? filter.sortBy === "sooner" : true;
       const appointmentLater =
@@ -22,7 +24,9 @@ const getSortedAppointments = (appointments, filter) => {
         appointmentLater &&
         appointmentPaymentPending &&
         appointmentConfirmed &&
-        textMatch
+        textMatch &&
+        startDateMatch &&
+        endDateMatch
       );
     })
     .sort((a, b) => {
@@ -31,7 +35,7 @@ const getSortedAppointments = (appointments, filter) => {
       } else if (filter.sortBy === "later") {
         return a.date < b.date ? 1 : -1;
       } else {
-        return a.createdAt < b.createdAt ? -1 : 1;
+        return a.createdAt < b.createdAt ? 1 : -1;
       }
     });
 };

@@ -29,7 +29,8 @@ class AppointmentForm extends React.Component {
       case 0:
         return (
           <FormikForm
-            extra={true}
+            date={true}
+            phone={true}
             fieldTypes={["Name", "Age", "Email"]}
             initials={initials}
             yupValidators={Yup.object(yupValidators)}

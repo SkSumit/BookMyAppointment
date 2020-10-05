@@ -8,6 +8,8 @@ import {
   checkBoxPaymentPending,
   setText,
 } from "../Action/filterActions";
+
+import DateRangePicker from "./DateRangePicker";
 class Options extends React.Component {
   handleChange = (e) => {
     switch (e.target.value) {
@@ -77,6 +79,12 @@ class Options extends React.Component {
             <span className="tag  is-warning is-light">Payment Pending</span>
           </label>
         </div>
+        <div className="column is-narrow">
+          <DateRangePicker
+            startDate={this.props.startDate}
+            endDate={this.props.endDate}
+          />
+        </div>
       </div>
     );
   }
@@ -87,6 +95,8 @@ const mapStateToProps = (state) => {
     paymentPending: state.filters.paymentPending,
     confirmed: state.filters.confirmed,
     text: state.filters.text,
+    startDate: state.filters.startDate,
+    endDate: state.filters.endDate,
   };
 };
 

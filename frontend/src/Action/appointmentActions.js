@@ -20,7 +20,6 @@ export const startGetAppointment = () => {
   return async (dispatch) => {
     try {
       const appointment = await axios.get(url + "/api/users");
-
       return dispatch(getAppointment(appointment.data));
     } catch (error) {
       return dispatch(getAppointmentError(error));
@@ -45,7 +44,6 @@ export const startAddAppointment = (addAppointments) => {
         _appId,
         status,
       });
-      // console.log(postdata, postdata.data._id);
 
       return (
         dispatch(

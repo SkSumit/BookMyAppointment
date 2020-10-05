@@ -38,3 +38,16 @@ export const setText = (text) => {
     text,
   };
 };
+
+export const setStartDate = (startDate) => {
+  return {
+    type: "SET_START_DATE",
+    startDate,
+  };
+};
+export const setEndDate = (endDate) => {
+  return {
+    type: "SET_END_DATE",
+    endDate,
+  };
+};
