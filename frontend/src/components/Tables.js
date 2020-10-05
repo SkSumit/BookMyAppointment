@@ -21,12 +21,25 @@ const Tables = (props) => {
       <tbody>
         {props.appoinment.map((appoinment, index) => {
           return (
-            <tr key={appoinment._id}>
+            <tr
+              className={
+                new Date(appoinment.date) > new Date()
+                  ? ""
+                  : "has-background-white-ter"
+              }
+              key={appoinment._id}
+            >
               <td> {appoinment.Name}</td>
               <td>{appoinment.Age}</td>
               <td>{appoinment.Email}</td>
               <td>{appoinment.phonenumber}</td>
-              <td>{new Date(appoinment.date).toLocaleDateString("en-GB")}</td>
+              <td>
+                <p>{new Date(appoinment.date).toLocaleDateString("en-GB")} </p>
+                {new Date(appoinment.date).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </td>
               <td>
                 {appoinment.status ? (
                   <span className="tag is-success is-light">Confirmed</span>

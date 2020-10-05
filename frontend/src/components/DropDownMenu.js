@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { startToggleStatus } from "../Action/appointmentActions";
 import { Link } from "react-router-dom";
 import Modal from "./common/Modal";
+import { startDeleteAppointment } from "../Action/appointmentActions";
 class DropDownMenu extends React.Component {
   state = {
     modalActive: false,
@@ -55,6 +56,9 @@ class DropDownMenu extends React.Component {
           setModalToggle={this.setModalToggle}
           _id={this.props._id}
           modalActive={this.state.modalActive}
+          text={"Do you want to delete the appointment?"}
+          buttonText={"Delete"}
+          action={startDeleteAppointment}
         />
       </div>
     );

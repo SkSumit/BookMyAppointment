@@ -17,25 +17,26 @@ class FormikForm extends React.Component {
       >
         {({ isSubmitting }) => (
           <Form>
-            {this.props.fieldTypes.map((name, index) => {
-              return (
-                <FormField key={index} label={name}>
-                  <Field
-                    name={name}
-                    className="input is-rounded"
-                    type="text"
-                    placeholder={`Enter Your ${name} Here`}
-                  />
-                  <ErrorMessage
-                    name={name}
-                    render={(error) => (
-                      <div className="help is-danger">{error}</div>
-                    )}
-                  />
-                </FormField>
-              );
-            })}
-            {this.props.extra && (
+            {this.props.fieldTypes &&
+              this.props.fieldTypes.map((name, index) => {
+                return (
+                  <FormField key={index} label={name}>
+                    <Field
+                      name={name}
+                      className="input is-rounded"
+                      type="text"
+                      placeholder={`Enter Your ${name} Here`}
+                    />
+                    <ErrorMessage
+                      name={name}
+                      render={(error) => (
+                        <div className="help is-danger">{error}</div>
+                      )}
+                    />
+                  </FormField>
+                );
+              })}
+            {this.props.phone && (
               <FormField label={"Phone Number"}>
                 <Field
                   name="phonenumber"
@@ -52,7 +53,7 @@ class FormikForm extends React.Component {
                 />
               </FormField>
             )}
-            {this.props.extra && (
+            {this.props.date && (
               <FormField label={"Date"}>
                 <DateTimeCalender name="date" />
                 <ErrorMessage

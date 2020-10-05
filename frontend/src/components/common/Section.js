@@ -2,7 +2,7 @@ import React from "react";
 
 const Section = (props) => {
   return (
-    <section className={`section  is-medium ${props.background}`}>
+    <section className={`section   ${props.background}`}>
       <div className="container">{props.children}</div>
     </section>
   );
