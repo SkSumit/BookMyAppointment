@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { useField, useFormikContext } from "formik";
 import DatePicker from "react-datepicker";
 
@@ -11,6 +12,7 @@ const DatePickerField = ({ ...props }) => {
       {value ? value : "Select Date"}
     </div>
   );
+ 
   return (
     <DatePicker
       {...field}
@@ -29,5 +31,10 @@ const DatePickerField = ({ ...props }) => {
     />
   );
 };
+const mapStateToProps = (state) => {
+  return {
+    appoinment: state.appointments,
+  };
+};
 
-export default DatePickerField;
+export default connect(mapStateToProps)(DatePickerField);

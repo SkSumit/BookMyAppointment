@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Section from "../common/Section";
 import ErrorSection from "../common/Error";
-import { Title } from "../common/Typography";
+import { Subtitle, Title } from "../common/Typography";
 
 import FormikForm from "../common/FormikForm";
 import * as Yup from "yup";
@@ -25,7 +25,8 @@ class EditPage extends React.Component {
     if (typeof this.props.oneAppoinment === "undefined") {
       return <ErrorSection error={true} />;
     }
-    const { Name, Age, Email, date, phonenumber } = this.props.oneAppoinment;
+    const { Name, Age, Email, date, phonenumber, createdAt,  } = this.props.oneAppoinment;
+    
 
     return (
       <Section>
@@ -33,6 +34,10 @@ class EditPage extends React.Component {
           {
             <div className="column is-half">
               <Title title={`You are editing ${Name}'s appointment`} />
+              <Subtitle subtitle={`Appointment Booked on ${new Date(createdAt).toLocaleDateString("en-GB")} at ${new Date(createdAt).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}`}/>
               <FormikForm
                 date={true}
                 phone={true}
@@ -64,6 +69,10 @@ class EditPage extends React.Component {
           text={"Do you want to edit the appointment?"}
           buttonText={"Confirm"}
           action={startEditAppointment}
+          toastType={"success"}
+          toastText={"Successfully Edited"}
+          redirect={true}
+          redirectURL={"/dashboard"}
         />
       </Section>
     );
