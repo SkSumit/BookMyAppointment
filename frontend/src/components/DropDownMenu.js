@@ -40,6 +40,7 @@ class DropDownMenu extends React.Component {
               >
                 Mark as {!this.props.status ? "Confirmed" : "Payment Pending"}
               </Link>
+           
               <hr className="dropdown-divider" />
               <Link
                 onClick={() => {
@@ -59,6 +60,8 @@ class DropDownMenu extends React.Component {
           text={"Do you want to delete the appointment?"}
           buttonText={"Delete"}
           action={startDeleteAppointment}
+          toastType={"success"}
+          toastText={"Successfully Deleted"}
         />
       </div>
     );

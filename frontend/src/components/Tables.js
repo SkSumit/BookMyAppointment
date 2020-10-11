@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import getSortedAppointments from "../Selectors/appointmentSelectors";
+import { getTotalAppointment, getTotalDays } from "../Selectors/statsSelectors";
 import DropDownMenu from "./DropDownMenu";
 
 const Tables = (props) => {
+  
   return (
     <table className="table is-hoverable is-fullwidth  ">
       <thead>
@@ -41,12 +43,16 @@ const Tables = (props) => {
                 })}
               </td>
               <td>
-                {appoinment.status ? (
-                  <span className="tag is-success is-light">Confirmed</span>
+                {new Date(appoinment.date) > new Date() ? (
+                  appoinment.status ? (
+                    <span className="tag is-success is-light">Confirmed</span>
+                  ) : (
+                    <span className="tag  is-warning is-light">
+                      Payment Pending
+                    </span>
+                  )
                 ) : (
-                  <span className="tag  is-warning is-light">
-                    Payment Pending
-                  </span>
+                  <span className="tag  is-danger is-light">Expired</span>
                 )}
               </td>
               <td>
@@ -62,6 +68,11 @@ const Tables = (props) => {
             </tr>
           );
         })}
+        {props.notFound && (
+          <tr className="tag is-medium  ">
+            <p>Didn't find any appointment with that name.</p>
+          </tr>
+        )}
       </tbody>
     </table>
   );
@@ -70,6 +81,7 @@ const Tables = (props) => {
 const mapStateToProps = (state) => {
   return {
     appoinment: getSortedAppointments(state.appointments, state.filters),
+    filters: state.filters,
     error: state.error,
   };
 };

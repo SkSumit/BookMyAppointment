@@ -8,6 +8,8 @@ import {
   checkBoxPaymentPending,
   setText,
 } from "../Action/filterActions";
+ 
+import {FormFieldIcons} from './common/Typography'
 
 import DateRangePicker from "./DateRangePicker";
 class Options extends React.Component {
@@ -34,7 +36,7 @@ class Options extends React.Component {
       <div className="columns  is-vcentered">
         <div className="column is-4 ">
           <div className="field">
-            <div className="control">
+            <div className="control  has-icons-left">
               <input
                 className="input is-rounded"
                 type="text"
@@ -44,6 +46,9 @@ class Options extends React.Component {
                   this.props.dispatch(setText(e.target.value));
                 }}
               />
+              <span className="icon is-small is-left">
+              {FormFieldIcons("Search")}
+            </span>
             </div>
           </div>
         </div>

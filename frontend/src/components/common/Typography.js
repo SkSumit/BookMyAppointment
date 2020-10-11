@@ -40,7 +40,7 @@ export const FormField = (props) => {
   );
 };
 
-const FormFieldIcons = (label) => {
+export const FormFieldIcons = (label) => {
   switch (label) {
     case "Name":
       return <img alt="edit" src={require("../../Img/user.svg")} />;
@@ -50,6 +50,10 @@ const FormFieldIcons = (label) => {
       return <img alt="edit" src={require("../../Img/mail.svg")} />;
     case "Phone Number":
       return <img alt="edit" src={require("../../Img/phone.svg")} />;
+    case "Refrence ID":
+        return <img alt="edit" src={require("../../Img/activity.svg")} />;
+        case "Search":
+          return <img alt="edit" src={require("../../Img/search.svg")} />;
     default:
       return;
   }
