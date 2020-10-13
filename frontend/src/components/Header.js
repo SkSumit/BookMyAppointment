@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Button } from "./common/Typography";
+import { history } from "../Routers/AppRouter";
+import {startLogOut} from '../Action/authActions'
 class Header extends Component {
   toggleNavbar = (e) => {
     document
@@ -38,7 +41,10 @@ class Header extends Component {
           </div>
 
           <div id="navbarBasicExample" className="navbar-menu">
+        
             <div className="navbar-start">
+            {this.props.auth &&
+              <>
               <div className="navbar-item ">
                 <NavLink
                   className="navlink has-text-black"
@@ -58,6 +64,8 @@ class Header extends Component {
                   Dashboard
                 </NavLink>
               </div>
+              </>
+            }
               <div className="navbar-item">
                 <NavLink
                   to="/status"
@@ -68,15 +76,30 @@ class Header extends Component {
                 </NavLink>
               </div>
             </div>
+          
+         
+            
             <div className="navbar-end">
               <div className="navbar-item">
-                <Button
-                  text={"Logout"}
-                  rounded={true}
-                  bgColor={"danger"}
-                  txtColor={"white"}
-                  isSemiBold={true}
-                />
+               { this.props.auth ? <Button
+                text={"Log out"}
+                rounded={true}
+                bgColor={"danger"}
+                txtColor={"white"}
+                isSemiBold={true}
+                onClick={()=>this.props.dispatch(startLogOut())}
+              /> :
+              <Button
+              text={"Log In"}
+              rounded={true}
+              bgColor={"danger"}
+              txtColor={"white"}
+              isSemiBold={true}
+              onClick={()=>history.push("/login")}
+            />
+
+               }
+                  
               </div>
             </div>
           </div>
@@ -85,4 +108,9 @@ class Header extends Component {
     );
   }
 }
-export default Header;
+const mapStateToProps = (state) =>{
+  return{
+    auth:state.auth.uid
+  }
+}
+export default connect(mapStateToProps)(Header);

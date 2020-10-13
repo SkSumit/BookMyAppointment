@@ -156,3 +156,14 @@ export const startToggleStatus = (id, updates) => {
     }
   };
 };
+
+
+export const startGetAdmins = async (email) => {
+  try {
+    const admin = await axios.get(url + `/api/auth/${email}`);
+    console.log(admin)
+    return admin.data;
+  } catch (error) {
+    throw error;
+  }
+};

@@ -40,4 +40,12 @@ export const StatusSubmissionSucessfully = (props) => {
   );
 };
 
+
+export const AuthFormSubmissionUnsucessfully = (props) => {
+  return (
+    <div className="notification is-danger is-light">
+    <p> {props.error}</p>
+    </div>
+  );
+};
 export default FormSubmissionSucessfully;

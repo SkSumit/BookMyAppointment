@@ -6,6 +6,8 @@ import { Title, Subtitle, Landing } from "../common/Typography";
 import AppointmentForm from "../AppointmentForm";
 
 class IndexPage extends React.Component {
+
+
   render() {
     return (
       <Landing>
@@ -24,6 +26,7 @@ class IndexPage extends React.Component {
               <AppointmentForm />
             </div>
           </div>
+
         </Section>
       </Landing>
     );

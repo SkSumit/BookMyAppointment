@@ -36,6 +36,7 @@ class AppointmentForm extends React.Component {
             yupValidators={Yup.object(yupValidators)}
             onSubmitHandler={async (values, { setSubmitting }) => {
               try {
+                
                 const _id = await this.props.dispatch(
                   startAddAppointment(values)
                 );

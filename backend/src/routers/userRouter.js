@@ -1,6 +1,7 @@
 const express = require("express");
 
-const User = require("../models/users");
+const User= require("../models/users");
+
 
 const router = new express.Router();
 
@@ -90,7 +91,7 @@ router.get("/api/status/:id", async (req, res) => {
     res.status(500).send(error);
   }
 });
-module.exports = router;
+
 
 //UPDATE STATUS
 router.patch("/api/status/:id", async (req, res) => {
@@ -111,3 +112,7 @@ router.patch("/api/status/:id", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+
+
+module.exports = router;
