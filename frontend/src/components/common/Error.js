@@ -8,7 +8,7 @@ const Error = (props) => {
         <div className="hero-body ">
           <div className="container box py-6 ">
             {props.error && (
-              <Title title={"Uh...ERROR 404, Not Found."} centered={true} />
+              <Title title={"ERROR 404, Not Found."} centered={true} />
             )}
           </div>
         </div>
