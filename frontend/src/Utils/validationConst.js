@@ -3,9 +3,10 @@ import * as Yup from "yup";
 export const initials = {
   Name: "Sumit",
   Age: "12",
-  Email: "12@12.com",
+  Email: "dsad@as.com",
   phonenumber: "1235467897",
   date: "",
+  Password:""
 };
 
 export const yupValidators = {
@@ -29,6 +30,24 @@ export const yupValidators = {
       "Must be a valid Indian phone number"
     )
     .required("Required Phone Number"),
-
+ 
   date: Yup.date().required("Required Date"),
+ 
+};
+
+
+export const yupLoginValidators = {
+
+  Email: Yup.string()
+    .trim()
+    .email("Invalid email address")
+    .required("Required Email"),
+  Password:Yup.string().required("Password Required").trim()
+
+ 
+};
+
+export const loginInitials = {
+ Email: "admin@admin.com",
+ Password:"adminisme"
 };

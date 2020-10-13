@@ -20,6 +20,7 @@ export const Button = (props) => {
   return (
     <button
       className={`button ${isrounded} has-background-${bgColor} has-text-${txtColor} ${isSemiBold} ${isLoading}`}
+      onClick={props.onClick}
     >
       {props.text}
     </button>
@@ -51,9 +52,11 @@ export const FormFieldIcons = (label) => {
     case "Phone Number":
       return <img alt="edit" src={require("../../Img/phone.svg")} />;
     case "Refrence ID":
-        return <img alt="edit" src={require("../../Img/activity.svg")} />;
-        case "Search":
-          return <img alt="edit" src={require("../../Img/search.svg")} />;
+      return <img alt="edit" src={require("../../Img/activity.svg")} />;
+    case "Search":
+      return <img alt="edit" src={require("../../Img/search.svg")} />;
+    case "Password":
+      return <img alt="edit" src={require("../../Img/lock.svg")} />;
     default:
       return;
   }

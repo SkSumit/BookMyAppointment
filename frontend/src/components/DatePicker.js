@@ -3,15 +3,18 @@ import { connect } from "react-redux";
 import { useField, useFormikContext } from "formik";
 import DatePicker from "react-datepicker";
 
+
+const Exp = ({ value, onClick }) => (
+  <div className="button" onClick={onClick}>
+    {value ? value : "Select Date"}
+  </div>
+);
+
 const DatePickerField = ({ ...props }) => {
   const { setFieldValue } = useFormikContext();
   const [field] = useField(props);
   var date = new Date();
-  const Exp = ({ value, onClick }) => (
-    <div className="button" onClick={onClick}>
-      {value ? value : "Select Date"}
-    </div>
-  );
+ 
  
   return (
     <DatePicker

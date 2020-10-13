@@ -53,6 +53,7 @@ class FormikForm extends React.Component {
                 />
               </FormField>
             )}
+    
             {this.props.date && (
               <FormField label={"Date"}>
                 <DateTimeCalender name="date" />
@@ -65,6 +66,7 @@ class FormikForm extends React.Component {
               </FormField>
             )}
             <Button
+            
               text={"Submit"}
               rounded={true}
               bgColor={"danger"}
