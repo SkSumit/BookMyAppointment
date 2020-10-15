@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import getSortedAppointments from "../Selectors/appointmentSelectors";
-import { getTotalAppointment, getTotalDays } from "../Selectors/statsSelectors";
+
 import DropDownMenu from "./DropDownMenu";
 
 const Tables = (props) => {
@@ -68,7 +68,7 @@ const Tables = (props) => {
             </tr>
           );
         })}
-        {props.notFound && (
+        {props.notFound && (props.error.length === 0) && (
           <tr className="tag is-medium  ">
             <p>Didn't find any appointment with that name.</p>
           </tr>

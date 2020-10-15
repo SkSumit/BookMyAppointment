@@ -1,10 +1,10 @@
 import * as Yup from "yup";
 
 export const initials = {
-  Name: "Sumit",
-  Age: "12",
-  Email: "dsad@as.com",
-  phonenumber: "1235467897",
+  Name: "",
+  Age: "",
+  Email: "",
+  phonenumber: "",
   date: "",
   Password:""
 };
@@ -48,6 +48,6 @@ export const yupLoginValidators = {
 };
 
 export const loginInitials = {
- Email: "admin@admin.com",
- Password:"adminisme"
+ Email: "",
+ Password:""
 };

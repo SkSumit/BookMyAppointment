@@ -9,7 +9,7 @@ const PrivateRoute = ({ isAuthenticated, component: Component, ...rest }) => (
       isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
     }
   />
-// console.log(isAuthenticated)
+
 );
 
 const mapStateToProps = (state) => {

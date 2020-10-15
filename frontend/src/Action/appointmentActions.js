@@ -58,6 +58,7 @@ export const startAddAppointment = (addAppointments) => {
       );
     } catch (error) {
       throw error;
+     
     }
   };
 };
@@ -76,7 +77,7 @@ export const startDeleteAppointment = (id) => {
       await axios.delete(url + `/api/users/${id}`);
       return dispatch(deleteAppointment(id));
     } catch (error) {
-      throw error;
+      return dispatch(getAppointmentError(error));
     }
   };
 };
@@ -93,10 +94,10 @@ export const startGetOneAppointment = (id) => {
   return async (dispatch) => {
     try {
       const postdata = await axios.get(url + `/users/${id}`);
-      // console.log(postdata.data);
+    
       return dispatch(getOneAppointment(postdata.data));
     } catch (error) {
-      throw error;
+      return dispatch(getAppointmentError(error));
     }
   };
 };
@@ -114,12 +115,12 @@ export const editAppointment = (_id, updates) => {
 export const startEditAppointment = (id, updates) => {
   return async (dispatch) => {
     try {
-      // console.log(updates);
-      const postdata = await axios.patch(url + `/api/users/${id}`, updates);
-      // console.log("Update axios req", postdata.data);
+   
+      await axios.patch(url + `/api/users/${id}`, updates);
+     
       return dispatch(editAppointment(id, updates));
     } catch (error) {
-      throw error;
+      return dispatch(getAppointmentError(error));
     }
   };
 };
@@ -147,12 +148,12 @@ export const toggleStatus = (_id, updates) => {
 export const startToggleStatus = (id, updates) => {
   return async (dispatch) => {
     try {
-      // console.log(id, updates);
+   
       await axios.patch(url + `/api/status/${id}`, updates);
-      // console.log(postdata);
+     
       return dispatch(toggleStatus(id, updates));
     } catch (error) {
-      throw error;
+      return dispatch(getAppointmentError(error));
     }
   };
 };
@@ -161,7 +162,7 @@ export const startToggleStatus = (id, updates) => {
 export const startGetAdmins = async (email) => {
   try {
     const admin = await axios.get(url + `/api/auth/${email}`);
-    console.log(admin)
+   
     return admin.data;
   } catch (error) {
     throw error;
