@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 class FormikForm extends React.Component {
   render() {
+  
     return (
       <Formik
         initialValues={this.props.initials}
@@ -19,12 +20,13 @@ class FormikForm extends React.Component {
           <Form>
             {this.props.fieldTypes &&
               this.props.fieldTypes.map((name, index) => {
+               
                 return (
                   <FormField key={index} label={name}>
                     <Field
                       name={name}
                       className="input is-rounded"
-                      type="text"
+                      type={name === "Password" ? "password":"text"}
                       placeholder={`Enter Your ${name} Here`}
                     />
                     <ErrorMessage

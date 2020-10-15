@@ -40,7 +40,8 @@ firebase.auth().onAuthStateChanged((user) => {
     renderApp();
     store.dispatch(logout());
     
-  
   }
 });
+    
+  
 serviceWorker.unregister();
