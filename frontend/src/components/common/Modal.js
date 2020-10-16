@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Modal = (props)=> {
  
   const history = useHistory();
-
+  //  console.log(props.modalActive)
     return (
       <div>
         <div className={`${props.modalActive ? "is-active" : ""} modal  `}>
@@ -22,7 +22,7 @@ const Modal = (props)=> {
                     props.action(props._id, props.value)
                   );
                   await props.setModalToggle(false);
-                  props.redirect &&  history.push(props.redirectURL);
+                  // props.redirect &&  history.push(props.redirectURL);
                  
                   toast[props.toastType](props.toastText, {
                     position: "bottom-right",
@@ -59,7 +59,8 @@ const Modal = (props)=> {
           pauseOnHover
         />
       </div>
+    
     );
-  
+   
 }
 export default connect()(Modal);

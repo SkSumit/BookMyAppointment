@@ -23,7 +23,7 @@ const AppRouter = () => (
     <Route path="/status" exact={true}  component={StatusPage} />
     <Route path={"/status/:id"} component={StatusPage} />
     <Route path="/login" exact component={LoginPage} />
-    <PrivateRoute path="/dashboard" exact  component={AdminDashboardPage} />
+    <PrivateRoute path="/dashboard"   component={AdminDashboardPage} />
 
     <Redirect from="/edit" to="/dashboard" exact />
     
@@ -33,4 +33,3 @@ const AppRouter = () => (
 );
 
 export default AppRouter;
-// 
