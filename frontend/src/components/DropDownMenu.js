@@ -9,6 +9,7 @@ class DropDownMenu extends React.Component {
     modalActive: false,
   };
   setModalToggle = (toggle) => {
+    
     this.setState({ modalActive: toggle });
   };
 
@@ -40,16 +41,17 @@ class DropDownMenu extends React.Component {
               >
                 Mark as {!this.props.status ? "Confirmed" : "Payment Pending"}
               </Link>
-           
+
               <hr className="dropdown-divider" />
-              <Link
+              <p
                 onClick={() => {
+                 
                   this.setState({ modalActive: true });
                 }}
                 className="dropdown-item"
               >
                 Delete
-              </Link>
+              </p>
             </div>
           </div>
         </div>
