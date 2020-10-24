@@ -1,2 +1,2 @@
 # BookMyAppointment
-A booking system for Doctors, Clinics and Laboratories.
+A MERN Stack booking system for Doctors, Clinics and Laboratories.
