@@ -37,7 +37,7 @@ firebase.auth().onAuthStateChanged((user) => {
       if (history.location.pathname === "/") {
         history.push("/dashboard");
       } 
-      const pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
+      const pusher = new Pusher(process.env.REACT_APP_PUSHER_APP_KEY, {
         cluster: process.env.REACT_APP_PUSHER_APP_CLUSTER,
         encrypted: true,
       });
