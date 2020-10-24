@@ -1,4 +1,5 @@
 const getSortedAppointments = (appointments, filter) => {
+  
   return appointments
     .filter((appointment) => {
       const startDateMatch = new Date(appointment.date) > filter.startDate;
@@ -41,3 +42,7 @@ const getSortedAppointments = (appointments, filter) => {
 };
 
 export default getSortedAppointments;
+
+
+
+
