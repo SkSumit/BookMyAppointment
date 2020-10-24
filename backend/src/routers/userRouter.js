@@ -1,9 +1,29 @@
 const express = require("express");
-
-const User= require("../models/users");
-
+require("dotenv").config();
+const Pusher = require("pusher");
+const User = require("../models/users");
 
 const router = new express.Router();
+
+const pusher = new Pusher({
+  appId: process.env.PUSHER_APP_ID,
+  key: process.env.PUSHER_APP_KEY,
+  secret: process.env.PUSHER_APP_SECRET,
+  cluster: process.env.PUSHER_APP_CLUSTER,
+  encrypted: true,
+});
+
+User.watch().
+  on('change', data => {
+    pusher.trigger("byapp", "update-appointments", 
+      data,
+    ).catch((error)=>{
+      console.log(error)
+    });
+
+  });
+
+
 
 //POST CREATE USER
 router.post("/api/users", async (req, res) => {
@@ -92,7 +112,6 @@ router.get("/api/status/:id", async (req, res) => {
   }
 });
 
-
 //UPDATE STATUS
 router.patch("/api/status/:id", async (req, res) => {
   const _id = req.params.id;
@@ -112,7 +131,5 @@ router.patch("/api/status/:id", async (req, res) => {
     res.status(500).send(error);
   }
 });
-
-
 
 module.exports = router;

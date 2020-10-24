@@ -7,7 +7,7 @@
     "heroku-postbuild": "cd ./frontend/ && npm install && npm run build",
     "backend": "cd ./backend/ && nodemon server.js ",
     "frontend": "cd ./frontend/ && yarn run start",
-    "test":"cd ./frontend/ && yarn run test"
+    "test":"cd ./frontend/ && npm run test"
   },
   "engines": {
     "node": "12.x"

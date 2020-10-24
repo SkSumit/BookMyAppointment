@@ -22,7 +22,7 @@ const Modal = (props)=> {
                     props.action(props._id, props.value)
                   );
                   await props.setModalToggle(false);
-                  // props.redirect &&  history.push(props.redirectURL);
+                  props.redirect &&  history.push(props.redirectURL);
                  
                   toast[props.toastType](props.toastText, {
                     position: "bottom-right",
