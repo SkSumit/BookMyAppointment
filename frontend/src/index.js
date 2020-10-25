@@ -11,9 +11,11 @@ import "./styles.scss";
 
 import firebase from "./Firebase/firebase";
 import { history } from "./Routers/AppRouter";
+import Spinner from './components/spinner'
+
 const store = configStore();
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
+ReactDOM.render( <Spinner/>  , document.getElementById("root"));
 let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
