@@ -1,8 +1,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="http://byapp.herokuapp.com/">
+    <img src="frontend/src/Img/byapp2.jpg" alt="Logo">
   </a>
 
   <h3 align="center">Book Your Appointment</h3>
@@ -41,8 +41,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Byapp][product-screenshot]](https://example.com)
+[![Index][product-screenshot1]](http://byapp.herokuapp.com/)
+[![Dashboard][product-screenshot]](http://byapp.herokuapp.com/dashboard)
 
 This is a MERN stack booking system built for learning, understanding and enhancing my skills.
 
@@ -187,4 +187,5 @@ Sumit Kolpekwar  - kolsum24@gmail.com
 [license-url]: https://github.com/SkSumit/BookMyAppointment/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/sumitkolpekwar/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: frontend/src/Img/byapp.jpg
+[product-screenshot1]: frontend/src/Img/byapp1.jpg
